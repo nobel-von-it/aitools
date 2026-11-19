@@ -1,0 +1,65 @@
+[package]
+name = "aitools"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+description = "Universal document extraction toolkit for AI agents"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+keywords = ["pdf", "docx", "xlsx", "ocr", "mcp"]
+categories = [
+    "text-processing",
+    "parser-implementations",
+    "command-line-utilities",
+]
+
+[package.metadata.docs.rs]
+all-features = true
+
+[features]
+default = ["pdf", "office", "image", "markdown"]
+# Format backends
+pdf = ["dep:pdf_oxide", "dep:pdf-extract"]
+office = ["dep:calamine", "dep:office_oxide"]
+image = ["dep:image", "dep:kamadak-exif"]
+markdown = []
+# OCR backends, selectable at runtime
+ocr-ocrs = ["image", "dep:ocrs", "dep:rten"]
+ocr-tesseract = ["image"]
+ocr-vision = ["image"]
+# Interfaces
+cli = []
+mcp = ["dep:rmcp", "dep:tokio", "dep:sha2", "dep:base64"]
+
+[[bin]]
+name = "aitools"
+path = "src/bin/aitools.rs"
+required-features = ["cli"]
+
+[[bin]]
+name = "aitools-mcp"
+path = "src/bin/aitools_mcp.rs"
+required-features = ["mcp"]
+
+[dependencies]
+base64 = { version = "0.23.1", optional = true }
+calamine = { version = "0.38.0", optional = true }
+image = { version = "0.25.10", optional = true }
+infer = "0.22.0"
+kamadak-exif = { version = "0.6.2", optional = true }
+ocrs = { version = "0.14.0", optional = true }
+office_oxide = { version = "0.1.17", optional = true }
+pdf-extract = { version = "0.12.1", optional = true }
+pdf_oxide = { version = "0.3.78", optional = true }
+rmcp = { version = "3.11.0", features = ["server", "transport-io", "macros", "schemars"], optional = true }
+rten = { version = "0.28.0", optional = true }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.154"
+sha2 = { version = "0.11.1", optional = true }
+thiserror = "2.0.21"
+tiktoken-rs = "0.12.1"
+tokio = { version = "1.54.1", features = ["rt-multi-thread", "macros", "io-std"], optional = true }
+
+[dev-dependencies]
+docx-rs = "0.4.22"
+rust_xlsxwriter = "0.103.0"
