@@ -1,0 +1,36 @@
+name: Предложение функциональности
+description: Новый формат, бэкенд, инструмент или улучшение интерфейса
+title: "feat: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Задача
+      description: Какую проблему нужно решить.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Предлагаемое решение
+      description: Как это должно работать с точки зрения пользователя.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Альтернативы
+      description: Какие варианты рассматривались.
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Дополнительный контекст
+      description: Примеры документов, ссылки на спецификации, ограничения.
+    validations:
+      required: false

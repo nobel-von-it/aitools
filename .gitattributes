@@ -1,0 +1,24 @@
+* text=auto eol=lf
+
+*.rs text eol=lf
+*.toml text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+*.jsonc text eol=lf
+*.sh text eol=lf
+Makefile text eol=lf
+Cargo.lock text eol=lf
+
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.tiff binary
+*.docx binary
+*.xlsx binary
+*.xls binary
+*.ods binary

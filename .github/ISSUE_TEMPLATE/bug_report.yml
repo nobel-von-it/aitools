@@ -1,0 +1,66 @@
+name: Сообщение об ошибке
+description: Воспроизводимая проблема в извлечении, CLI или MCP
+title: "bug: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Спасибо за сообщение. Не прикладывайте конфиденциальные документы и секреты.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Описание
+      description: Что произошло и что ожидалось.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Воспроизведение
+      description: Минимальные шаги, команда или фрагмент кода.
+      placeholder: |
+        aitools report.pdf --format json
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Ожидаемое поведение
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Фактическое поведение
+      description: Текст ошибки, предупреждения и вывод.
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Версия или коммит
+      placeholder: "0.1.0 или git sha"
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Окружение
+      placeholder: "ОС, версия Rust, клиент MCP"
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Дополнительно
+      description: Логи, стек вызовов, ссылки на похожие issue.
+    validations:
+      required: false
